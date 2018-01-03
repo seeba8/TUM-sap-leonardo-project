@@ -1,0 +1,1 @@
+python /home/pi/scripts/get_weather.py
