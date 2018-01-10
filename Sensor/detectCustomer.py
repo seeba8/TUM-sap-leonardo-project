@@ -7,16 +7,22 @@
 #--------------------------------------------------#
 
 #Bibliotheken einbinden
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 from datetime import datetime
 import time
 import requests 
-import json 
+import json
+import configparser
+import sys
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+
 
 # SAP HANA connection information
-url = 'http://ucchana86.ucc.in.tum.de:8000/gbi-student-017/ButcherShop/models/service.xsodata/DataTab/'
+url = config["HANA"]["url"]
 headers = {'content-type': 'application/json;charset=utf-8'}
-auth = 'GBI_017', '20gbi17init'
+auth = config["HANA"]["username"], config["HANA"]["password"]
 
 #----- Configuration
 # Modus (Test / Echt)
